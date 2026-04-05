@@ -221,7 +221,14 @@
             modeVideo: document.getElementById('mode-video'),
             recIndicator: document.getElementById('rec-indicator'),
             recTime: document.getElementById('rec-time'),
-            toast: document.getElementById('toast')
+            toast: document.getElementById('toast'),
+            // FIXED: Added missing button references here
+            btnSwitchCam: document.getElementById('btn-switch-cam'),
+            btnGallery: document.getElementById('btn-gallery'),
+            btnCloseGallery: document.getElementById('btn-close-gallery'),
+            btnCloseFull: document.getElementById('btn-close-full'),
+            btnDownload: document.getElementById('btn-download'),
+            btnDelete: document.getElementById('btn-delete')
         };
 
         const showToast = (msg) => {
@@ -478,18 +485,17 @@
         els.btnCapture.onclick = () => { currentMode === 'photo' ? Camera.takePhoto() : Camera.toggleVideo(); };
         els.btnSwitchCam.onclick = () => Camera.switchLens();
         
-        els.btnGallery = document.getElementById('btn-gallery');
         els.btnGallery.onclick = async () => { await UI.loadGallery(); UI.switchView(els.viewGal); };
         
-        document.getElementById('btn-close-gallery').onclick = () => UI.switchView(els.viewCam);
-        document.getElementById('btn-close-full').onclick = () => {
+        els.btnCloseGallery.onclick = () => UI.switchView(els.viewCam);
+        els.btnCloseFull.onclick = () => {
             els.fullVid.pause();
             if (activeObjectUrl) URL.revokeObjectURL(activeObjectUrl);
             UI.switchView(els.viewGal);
         };
         
-        document.getElementById('btn-download').onclick = () => UI.downloadActiveMedia();
-        document.getElementById('btn-delete').onclick = async () => {
+        els.btnDownload.onclick = () => UI.downloadActiveMedia();
+        els.btnDelete.onclick = async () => {
             if(confirm("Delete this permanently?")) {
                 await DB.delete(activeMediaId);
                 els.fullVid.pause();

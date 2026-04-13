@@ -37,7 +37,7 @@ Because Iris is an offline-first, client-side application, it requires zero buil
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/iris-camera.git
+   git clone https://github.com/unskyit/iris-camera.git
    ```
 2. **Launch:**
    Simply open `index.html` in any modern web browser.
